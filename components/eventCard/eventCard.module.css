@@ -1,0 +1,16 @@
+.card {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.task {
+    background-color: var(--task-bg);
+}
+
+.meet {
+    background-color: var(--meet-bg);
+}
+
+.default {
+    background-color: gray;
+}

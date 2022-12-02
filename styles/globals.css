@@ -24,3 +24,8 @@ a {
     background: black;
   }
 }
+
+:root {
+  --task-bg: #A2EEDE;
+  --meet-bg: #A1CFD7;
+}
