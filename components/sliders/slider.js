@@ -1,31 +1,23 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
-
+import styles from "./slider.module.css"
 const marks = [
   {
     value: 0,
-    label: '1',
+    label: '0°C',
   },
   {
     value: 20,
-    label: '2',
+    label: '20°C',
   },
   {
-    value: 40,
-    label: '3',
-  },
-  {
-    value: 60,
-    label: '4',
-  },
-  {
-    value: 80,
-    label: '5',
+    value: 37,
+    label: '37°C',
   },
   {
     value: 100,
-    label: '6',
+    label: '100°C',
   },
 ];
 
@@ -35,7 +27,7 @@ function valuetext(value) {
 
 export default function DiscreteSliderMarks() {
   return (
-    <Box sx={{ width: 300 }}>
+    <Box className={styles.dupa}>
       <Slider
         aria-label="Custom marks"
         defaultValue={20}
