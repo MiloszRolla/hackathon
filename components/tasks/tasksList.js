@@ -60,7 +60,7 @@ export default function TaskList(props) {
     return (
         <>
         {props.type == "Day" ? 
-       <Box sx={{display:'flex', flexDirection:'column', justifyContent:'start', mt: 10, alignItems:'center',}}>
+       <Box sx={{display:'flex', flexDirection:'column', justifyContent:'start', mt: 10, alignItems:'center', overflowY:'auto'}}>
        <Typography variant="h1">Your list for today </Typography>
        {data.map(task => {
            return (
@@ -71,7 +71,7 @@ export default function TaskList(props) {
         </Box>  : 
       <Box sx={{display:'flex', flexDirection:'column', justifyContent:'start', mt: 10, alignItems:'center',}}>
       <Typography variant="h1">Your list for week </Typography>
-      {data.map(task => {
+      {data.sort(date).map(task => {
         console.log(task.title)
           return (
             <Grid sx={{width:'80%'}} key={task.id} container spacing={2}>
