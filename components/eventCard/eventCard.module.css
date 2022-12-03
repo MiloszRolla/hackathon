@@ -1,0 +1,26 @@
+.card {
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 100%;
+}
+
+.task {
+    background-color: var(--task-bg);
+}
+
+.meet {
+    background-color: var(--meet-bg);
+}
+.friend {
+    background-color: var(--friend-bg);
+}
+.family {
+    background-color: var(--family-bg);
+}
+.work {
+    background-color: var(--work-bg);
+}
+
+.default {
+    background-color: rgb(150, 31, 31);
+}
