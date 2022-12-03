@@ -3,9 +3,10 @@ import { Box } from '@mui/system'
 import EventCard from '../eventCard/eventCard'
 import axios from "axios";
 import { Typography } from '@mui/material';
+import Grid from '@mui/material/Grid';
 
 
-export default function TaskList() {
+export default function TaskList(props) {
     
     
     const [taskData, setTaskData] = useState(null);
@@ -37,7 +38,7 @@ export default function TaskList() {
             category: "Task",
             startDate: "8:00",
             endDate: "10:00",
-            title:'Zona',
+            title:'Żona',
             group:'Friends',
             visibility:
             'Group: (visible for this.group) or none (visible for me) ',
@@ -72,15 +73,56 @@ export default function TaskList() {
 
 
 
+
     return (
-    <Box sx={{display:'flex', flexDirection:'column', justifyContent:'start', mt: 10, alignItems:'center',}}>
-        <Typography variant="h1">Your list for today </Typography>
-        {exampleTasks.map(task => {
-            return (
-                <EventCard key={task.id} data={task}/>
-                )
-            })
-            }
-    </Box>
+        <>
+        {props.type == "Day" ? 
+       <Box sx={{display:'flex', flexDirection:'column', justifyContent:'start', mt: 10, alignItems:'center',}}>
+       <Typography variant="h1">Your list for today </Typography>
+       {exampleTasks.map(task => {
+           return (
+               <EventCard key={task.id} data={task}/>
+               )
+           })
+           }
+        </Box>  : 
+      <Box sx={{display:'flex', flexDirection:'column', justifyContent:'start', mt: 10, alignItems:'center',}}>
+      <Typography variant="h1">Your list for week </Typography>
+      {exampleTasks.map(task => {
+          return (
+            <Grid sx={{width:'80%'}} key={task.id} container spacing={2}>
+                <Grid item xs={2}>
+                    <EventCard  data={task}/>
+                 </Grid>
+             
+                 <Grid item xs={2}>
+                    <EventCard  data={task}/>
+                 </Grid>
+
+                 <Grid item xs={2}>
+                    <EventCard  data={task}/>
+                 </Grid>
+
+                 <Grid item xs={2}>
+                    <EventCard  data={task}/>
+                 </Grid>
+
+                 <Grid item xs={2}>
+                    <EventCard  data={task}/>
+                 </Grid>
+
+                 <Grid item xs={1}>
+                    <EventCard  data={task}/>
+                 </Grid>
+                 <Grid item xs={1}>
+                    <EventCard  data={task}/>
+                 </Grid>
+            </Grid>
+              )
+          })
+          }
+        </Box>     
+    }
+</>
   )
 }

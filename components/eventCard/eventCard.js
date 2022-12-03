@@ -31,12 +31,12 @@ export default function eventCard(task) {
     }
 
     return (
-    <Paper elevation={14} sx={{my:1, minWidth: 275, maxHeight: '100px' }} className={`${styles.card} ${getCategory()}`}>
+    <Paper elevation={14} sx={{my:1, minWidth: 150, maxWidth: 300, maxHeight: '100px' }} className={`${styles.card} ${getCategory()}`}>
     <CardContent>
-        <Typography sx={{ fontSize: 19 }} color="white" >
+        <Typography sx={{ fontSize: 14 }} color="white" >
             {startDate ?  startDate : null} - {endDate ? endDate : null}
         </Typography>
-        <Typography color="white" variant="h4">
+        <Typography color="white" variant="h6">
             { title }
         </Typography>
     </CardContent>
