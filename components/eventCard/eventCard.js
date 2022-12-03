@@ -7,17 +7,15 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Paper } from '@mui/material';
 
-export default function eventCard(task) {
-
-    const { category, startDate, endDate, title, group } = task.data;
+export default function eventCard(props) {
 
     const getCategory = () => {
-        if(!category) {
+        if(!props.data.category) {
             return styles.default
         }
-        switch(category) {
+        switch(props.data.category) {
             case "Task":
-                switch(group) { 
+                switch(props.data.group) { 
                     case "Family":
                         return styles.family
                     case "Friends":
@@ -31,15 +29,16 @@ export default function eventCard(task) {
     }
 
     return (
-    <Paper elevation={14} sx={{my:1, minWidth: 150, maxWidth: 300, maxHeight: '100px' }} className={`${styles.card} ${getCategory()}`}>
+    <Paper elevation={14} sx={{my:1, minWidth: 150, maxWidth: 300, maxHeight: '100px' }}  className={`${styles.card} ${getCategory()}`}>
     <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="white" >
-            {startDate ?  startDate : null} - {endDate ? endDate : null}
-        </Typography>
+    <Typography sx={{ fontSize: 14 }} color="white" >
+        {/* {startDrate ?  startDate : null} - {endDate ? endDate : null} */}
+    </Typography>
         <Typography color="white" variant="h6">
-            { title }
+            { props.data.title }
         </Typography>
     </CardContent>
     </Paper>
+
     )
 }

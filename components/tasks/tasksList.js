@@ -1,51 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { Box } from '@mui/system'
 import EventCard from '../eventCard/eventCard'
-import axios from "axios";
 import { Typography } from '@mui/material';
 import Grid from '@mui/material/Grid';
-
+import axios from 'axios'
 
 export default function TaskList(props) {
+  const [data, setData] = useState([]);
+
+      const fetchData = async () => {
+        const res = await axios.get("https://firebasestorage.googleapis.com/v0/b/hackathon-d6832.appspot.com/o/tasks.json?alt=media&token=7ce765bd-4df8-4521-bb5b-8c625aff0d21")
+        setData(res.data);
+      };
+      useEffect(() => {
+        fetchData();
+      }, []);
     
-    let events = [];
-    const axios = require('axios');
-  
-    const getEvents = () => {
-      axios.get("https://firebasestorage.googleapis.com/v0/b/hackathon-d6832.appspot.com/o/tasks.json?alt=media&token=7ce765bd-4df8-4521-bb5b-8c625aff0d21").then(
-        (response) => {
-            events = response.data;
-            console.log(events);
-        }
-      )
-    }
-  
-    useEffect(() => {
-      getEvents();
-    });
-
-    const [taskData, setTaskData] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
-      
-    // useEffect(() => {
-    //     async function fetchData(){
-    //         const response = await fetch('https://ehcyy6pxcj.execute-api.eu-central-1.amazonaws.com/development/users')
-    //         const data = await response.json()
-    //         setTaskData(data)
-    //         setIsLoading(false)
-    //     }
-    //     fetchData();
-    //   }, []);
-
-    //   if(isLoading) {
-    //     return console.log(isLoading)
-    //   } 
-    //   else {
-    //     console.log(taskData)
-    //   }
-      
-
-    let exampleTasks =[
+        console.log(data)
+    
+    const exampleTasks =[
         {
             id:'1',
             date: "22.10.22",
@@ -81,12 +54,7 @@ export default function TaskList(props) {
             title:'Daily Meeting',
             group:'Family'
         },  
-
-
     ] 
-
-
-
 
     return (
         <>
@@ -102,7 +70,8 @@ export default function TaskList(props) {
         </Box>  : 
       <Box sx={{display:'flex', flexDirection:'column', justifyContent:'start', mt: 10, alignItems:'center',}}>
       <Typography variant="h1">Your list for week </Typography>
-      {events.map(task => {
+      {data.map(task => {
+        console.log(task.title)
           return (
             <Grid sx={{width:'80%'}} key={task.id} container spacing={2}>
                 <Grid item xs={2}>
