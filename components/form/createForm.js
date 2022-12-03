@@ -53,10 +53,20 @@ export default function CreateForm() {
       group:'Friends',
     },
   ]
-
+  const clearState = () => {
+    setCategory("");
+    setDate("2022-12-03T13:11:54.000Z");
+    setEndDate("2022-12-07T13:11:54.000Z");
+    setTitle("");
+    setCatGroup("");
+    setDescription("");
+  };
   const pushTable = (event) => {
     array.push(event)
     addEvent();
+    clearState();
+  console.log(array);
+
   }
   const addEvent = () => {
     axios
@@ -70,7 +80,9 @@ export default function CreateForm() {
       });
   };
 
-  
+
+
+
 
 
   return (
