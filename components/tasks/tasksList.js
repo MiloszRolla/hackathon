@@ -39,7 +39,7 @@ export default function TaskList(props) {
        <Typography variant="h1">Your list for today </Typography>
        {data.map(task => {
            return (
-               <EventCard key={task.id} data={task}/>
+                <EventCard width={400} key={task.id} data={task}/>
                )
            })
            }
@@ -50,30 +50,30 @@ export default function TaskList(props) {
           return (
             <Box sx={{width:'80%', display:'flex', justifyContent:'center'}} key={task.id}>
                 <Box>
-                    <EventCard  data={task}/>
+                    <EventCard  width={180}  data={task}/>
                  </Box>
              
                  <Box>
-                    <EventCard  data={task}/>
+                    <EventCard  width={180} data={task}/>
                  </Box>
 
                  <Box>
-                    <EventCard  data={task}/>
+                    <EventCard width={180} data={task}/>
                  </Box>
 
                  <Box>
-                    <EventCard  data={task}/>
+                    <EventCard width={180} data={task}/>
                  </Box>
 
                  <Box>
-                    <EventCard  data={task}/>
+                    <EventCard width={180} data={task}/>
                  </Box>
 
                  <Box>
-                    <EventCard  data={task}/>
+                    <EventCard width={180} data={task}/>
                  </Box>
                  <Box>
-                    <EventCard  data={task}/>
+                    <EventCard width={180} data={task}/>
                  </Box>
             </Box>
               )

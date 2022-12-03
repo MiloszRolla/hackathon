@@ -30,7 +30,7 @@ export default function eventCard(props) {
     }
 
     return (
-    <Paper elevation={14} sx={{my:1, minWidth: 180, maxHeight: '100px' }}  className={`${styles.card} ${getCategory()}`}>
+    <Paper elevation={14} sx={{my:1, minWidth: props.width, maxHeight: '100px' }}  className={`${styles.card} ${getCategory()}`}>
     <CardContent>
     <Typography sx={{ fontSize: 14 }} color="white" >
         {moment(props.data.date).format('HH:mm')} - {moment(props.data.endDate).format('HH:mm')}
