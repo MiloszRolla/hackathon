@@ -2,23 +2,31 @@ import React from 'react'
 import Box from '@mui/material/Box';
 import { Paper } from '@mui/material';
 import { Button, TextField, Typography } from '@mui/material';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
 
 export default function LoginPanel() {
+  const router = useRouter();
+
+  // if (typeof window !== "undefined") {
+  //   const login = localStorage.getItem("login");
+  //   const passwd = localStorage.getItem("passwd");
+  //   login === "admin" && passwd === "1234" ? router.push('/calendar') : router.push('/login');
+  // }
+
   const [open, setOpen] = React.useState(false)
-  
-  const router = useRouter()
+
   const login = () =>
   {
     const login = document.querySelector('#login').value;
     const passwd = document.querySelector('#passwd').value;
     if(login === "admin" && passwd === "1234") 
     {
+      localStorage.setItem("login", login);
+      localStorage.setItem("passwd", passwd);
       router.push('/calendar');
     }
-    console.log("Shit");
     setOpen(true);
   }  
   return (
