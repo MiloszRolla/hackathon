@@ -24,3 +24,10 @@ a {
     background: black;
   }
 }
+
+:root {
+  --task-bg: #44886c;
+  --meet-bg: #36325c;
+  --friend-bg: #5dd339;
+  --family-bg: #ce0d77;
+}
