@@ -16,47 +16,22 @@ export default function TaskList(props) {
       useEffect(() => {
         fetchData();
       }, []);
-    
+
+
+
+      function compare( a, b ) {
+        if ( a.date < b.date ){
+          return -1;
+        }
+        if ( a.date > b.date ){
+          return 1;
+        }
+        return 0;
+      }
+      data.sort( compare );
+
         console.log(data)
     
-    const exampleTasks =[
-        {
-            id:'1',
-            date: "22.10.22",
-            category: "Task",
-            startDate: "8:00",
-            endDate: "10:00",
-            title:'Żona',
-            group:'Friends',
-            visibility:
-            'Group: (visible for this.group) or none (visible for me) ',
-        },     
-        {
-            id:'2',
-            category: "Task",
-            startDate: "10:00",
-            endDate: "14:00",
-            title:'Kochanka',
-            group:'Family'
-        },  
-        {
-            id:'3',
-            category: "Task",
-            startDate: "14:00",
-            endDate: "20:00",
-            title:'Żona szefa',
-            group:'Work'
-        },   
-        {
-            id:'4',
-            category: "Meet",
-            startDate: "20:00",
-            endDate: "23:00",
-            title:'Daily Meeting',
-            group:'Family'
-        },  
-    ] 
-
     return (
         <>
         {props.type == "Day" ? 
@@ -64,44 +39,43 @@ export default function TaskList(props) {
        <Typography variant="h1">Your list for today </Typography>
        {data.map(task => {
            return (
-               <EventCard key={task.id} data={task}/>
+                <EventCard width={400} key={task.id} data={task}/>
                )
            })
            }
         </Box>  : 
       <Box sx={{display:'flex', flexDirection:'column', justifyContent:'start', mt: 10, alignItems:'center',}}>
       <Typography variant="h1">Your list for week </Typography>
-      {data.sort(date).map(task => {
-        console.log(task.title)
+      {data.map(task => {
           return (
-            <Grid sx={{width:'80%'}} key={task.id} container spacing={2}>
-                <Grid item xs={2}>
-                    <EventCard  data={task}/>
-                 </Grid>
+            <Box sx={{width:'80%', display:'flex', justifyContent:'center'}} key={task.id}>
+                <Box>
+                    <EventCard  width={180}  data={task}/>
+                 </Box>
              
-                 <Grid item xs={2}>
-                    <EventCard  data={task}/>
-                 </Grid>
+                 <Box>
+                    <EventCard  width={180} data={task}/>
+                 </Box>
 
-                 <Grid item xs={2}>
-                    <EventCard  data={task}/>
-                 </Grid>
+                 <Box>
+                    <EventCard width={180} data={task}/>
+                 </Box>
 
-                 <Grid item xs={2}>
-                    <EventCard  data={task}/>
-                 </Grid>
+                 <Box>
+                    <EventCard width={180} data={task}/>
+                 </Box>
 
-                 <Grid item xs={2}>
-                    <EventCard  data={task}/>
-                 </Grid>
+                 <Box>
+                    <EventCard width={180} data={task}/>
+                 </Box>
 
-                 <Grid item xs={1}>
-                    <EventCard  data={task}/>
-                 </Grid>
-                 <Grid item xs={1}>
-                    <EventCard  data={task}/>
-                 </Grid>
-            </Grid>
+                 <Box>
+                    <EventCard width={180} data={task}/>
+                 </Box>
+                 <Box>
+                    <EventCard width={180} data={task}/>
+                 </Box>
+            </Box>
               )
           })
           }

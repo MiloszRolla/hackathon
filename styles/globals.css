@@ -31,3 +31,10 @@ a {
   --friend-bg: #5dd339;
   --family-bg: #ce0d77;
 }
+.bgWrap {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  z-index: -1;
+}

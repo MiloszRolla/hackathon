@@ -20,6 +20,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import TaskList from '../../components/tasks/tasksList'
 import Menu from '@mui/material/Menu';
+import Image from 'next/image'
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
@@ -109,24 +110,27 @@ export default function PersistentDrawerLeft() {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar sx={{background:'#000',}} position="fixed" open={open}>
+      <AppBar sx={{ background: 'linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%)'}} 
+      position="fixed" open={open}>
         <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{ mr: 2, ...(open && { display: 'none' }) }}
-          >
-            <MenuIcon />
-          </IconButton>
           <Typography sx={{fontWeight:"600"}} variant="h5" noWrap component="div">
             Perfect Calendar
           </Typography>
+          <Divider sx={{background:'#fff', ml:2}} orientation="vertical" flexItem />
+          <List sx={{display:'flex'}}>
+          {[ 'Week', 'Day'].map((text, index) => (
+            <ListItem key={text} disablePadding>
+              <ListItemButton onClick={() =>setViewType(text)}>
+                <Typography sx={{fontWeight:'600'}} > {text}</Typography>
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+      
           <Box sx={{ flexGrow: 0, justifyContent:'end', ml:'auto' }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar  src="https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916__340.png" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -150,61 +154,28 @@ export default function PersistentDrawerLeft() {
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
+                <List sx={{px:2}}>
+          <Link href="/createEvent">
+            <Button sx={{width:'100%', }} variant='contained' endIcon={<AddIcon/>}>Add Event</Button>
+          </Link>
+        </List>
             </Menu>
           </Box>
         </Toolbar>
       </AppBar>
 
-      <Drawer
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          '& .MuiDrawer-paper': {
-            width: drawerWidth,
-            boxSizing: 'border-box',
-          },
-        }}
-        variant="persistent"
-        anchor="left"
-        open={open}
-      >
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-          </IconButton>
-        </DrawerHeader>
-        <Divider />
-        <List>
-          {['Month', 'Week', 'Day'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton onClick={() =>setViewType(text)}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List sx={{display:"flex", justifyContent:'center'}}>
-          <Link href="/createEvent">
-            <Button sx={{width:'80%'}} variant='contained' endIcon={<AddIcon/>}>Add Event</Button>
-          </Link>
-        </List>
-      </Drawer>
-      <Main
+      <Box
         sx={{
             display:'flex', 
             justifyContent:'center', 
             background: 'linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%)',
             width:'100vw',
-            height:'100vh'
+            minHeight:'100vh'
         }}
       open={open}>
         <DrawerHeader />
         <TaskList type={viewType}></TaskList>
-      </Main>
+      </Box>
     </Box>
   );
 }
