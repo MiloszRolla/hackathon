@@ -77,6 +77,7 @@ export default function PersistentDrawerLeft() {
   const [open, setOpen] = React.useState(false);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const settings = ['Profile', 'Account', 'Logout'];
+  const [viewType, setViewType] = React.useState("Day");
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -94,7 +95,7 @@ export default function PersistentDrawerLeft() {
     setAnchorElUser(null);
   };
 
-
+  console.log(viewType)
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -166,7 +167,7 @@ export default function PersistentDrawerLeft() {
         <List>
           {['Month', 'Week', 'Day'].map((text, index) => (
             <ListItem key={text} disablePadding>
-              <ListItemButton>
+              <ListItemButton onClick={() =>setViewType(text)}>
                 <ListItemIcon>
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                 </ListItemIcon>
@@ -192,7 +193,7 @@ export default function PersistentDrawerLeft() {
         }}
       open={open}>
         <DrawerHeader />
-        <TaskList></TaskList>
+        <TaskList type={viewType}></TaskList>
       </Main>
     </Box>
   );

@@ -1,9 +1,11 @@
 import React from 'react'
 import Box from '@mui/material/Box';
-import { TextField, Typography } from '@mui/material';
+import { TextField, Typography, Button } from '@mui/material';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import dayjs from 'dayjs';
 import Stack from '@mui/material/Stack';
+import axios from 'axios'
+
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import InputLabel from '@mui/material/InputLabel';
@@ -21,6 +23,30 @@ export default function CreateForm() {
   const handleChangeCat = (event) => {
     setCat(event.target.value);
   };
+
+
+
+  const addEvent = () => {
+    axios
+      .post("https://firebasestorage.googleapis.com/v0/b/hackathon-d6832.appspot.com/o/sample2.json?alt=media&token=8c031b2a-b87b-4c50-a057-15f83b64ab13", 
+      {
+        id:'2',
+        date: "22.10.22",
+        category: "Task",
+        startDate: "8:00",
+        endDate: "10:00",
+        title:'Żona',
+        group:'Friends',
+        visibility: true,
+    }
+      )
+      .catch((error) => {
+        if (error.response) {
+          console.log(error.response.data);
+        }
+      });
+  };
+
 
   return (
 
@@ -54,8 +80,17 @@ export default function CreateForm() {
     <MenuItem value={"Friends"}>Friends</MenuItem>
     <MenuItem value={"Work"}>Work</MenuItem>
   </Select>
-</FormControl>          <TextField id="outlined-basic"  label="Description" multiline maxRows={4} variant="outlined" />
+</FormControl>        
+  <TextField id="outlined-basic"  label="Description" multiline maxRows={4} variant="outlined" />
         </Box>
+        <Button
+              fullWidth
+              variant="contained"
+              onClick={addEvent}
+            >
+              Add worker
+            </Button>
+
     </Box>
   )
   
