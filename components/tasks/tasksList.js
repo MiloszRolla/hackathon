@@ -8,17 +8,27 @@ import { Typography } from '@mui/material';
 export default function TaskList() {
     
     
-    const [data, setData] = useState([]);
-    // const fetchData = async () => {
-    //     const res = await axios.get(`https://ehcyy6pxcj.execute-api.eu-central-1.amazonaws.com/development/users`);
-    //     console.log(res.data);
-    //   };
+    const [taskData, setTaskData] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+      
+    
+    // useEffect(() => {
+    //     async function fetchData(){
+    //         const response = await fetch('https://ehcyy6pxcj.execute-api.eu-central-1.amazonaws.com/development/users')
+    //         const data = await response.json()
+    //         setTaskData(data)
+    //         setIsLoading(false)
+    //     }
+    //     fetchData();
+    //   }, []);
 
-      useEffect(() => {
-        // fetchData();
-      });
-
-
+    //   if(isLoading) {
+    //     return console.log(isLoading)
+    //   } 
+    //   else {
+    //     console.log(taskData)
+    //   }
+      
 
     const exampleTasks =[
         {
