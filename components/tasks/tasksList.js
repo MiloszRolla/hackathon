@@ -9,26 +9,17 @@ import Grid from '@mui/material/Grid';
 export default function TaskList(props) {
     
     
-    const [taskData, setTaskData] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
-      
-    
-    // useEffect(() => {
-    //     async function fetchData(){
-    //         const response = await fetch('https://ehcyy6pxcj.execute-api.eu-central-1.amazonaws.com/development/users')
-    //         const data = await response.json()
-    //         setTaskData(data)
-    //         setIsLoading(false)
-    //     }
-    //     fetchData();
-    //   }, []);
+    const [data, setData] = useState([]);
 
-    //   if(isLoading) {
-    //     return console.log(isLoading)
-    //   } 
-    //   else {
-    //     console.log(taskData)
-    //   }
+    const fetchData = async () => {
+      const res = await axios.post(`https://firebasestorage.googleapis.com/v0/b/hackathon-d6832.appspot.com/o/sample2.json?alt=media&token=67de1b8e-1120-4dec-8c61-a17409334a6a`, {test: "test"});
+      setData(res.data)
+    }
+  
+    useEffect(() => {
+      fetchData();
+    }, []);
+  
       
 
     const exampleTasks =[
@@ -67,12 +58,7 @@ export default function TaskList(props) {
             title:'Daily Meeting',
             group:'Family'
         },  
-
-
     ] 
-
-
-
 
     return (
         <>
@@ -88,7 +74,7 @@ export default function TaskList(props) {
         </Box>  : 
       <Box sx={{display:'flex', flexDirection:'column', justifyContent:'start', mt: 10, alignItems:'center',}}>
       <Typography variant="h1">Your list for week </Typography>
-      {exampleTasks.map(task => {
+      {data.map(task => {
           return (
             <Grid sx={{width:'80%'}} key={task.id} container spacing={2}>
                 <Grid item xs={2}>

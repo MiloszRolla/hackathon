@@ -9,6 +9,12 @@ import { Paper } from '@mui/material';
 
 export default function eventCard(task) {
 
+
+
+    
+
+
+
     const { category, startDate, endDate, title, group } = task.data;
 
     const getCategory = () => {

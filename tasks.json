@@ -1,33 +1,37 @@
 [
 {
-    "id": 4,
+    "id": 1,
     "category": "Meet",
-    "startDate": "20:00",
-    "endDate": "23:00",
+    "startTIme": "20:00",
+    "endTime": "23:00",
+    "date":"12-10-22",
+    "title":"Daily Meeting",
+    "group":"Family"
+},
+{
+    "id": 2,
+    "category": "Meet",
+    "startTIme": "20:00",
+    "endTime": "23:00",
+    "date":"12-10-22",
+    "title":"Daily Meeting",
+    "group":"Family"
+},
+{
+    "id": 3,
+    "category": "Meet",
+    "startTIme": "20:00",
+    "endTime": "23:00",
+    "date":"12-10-22",
     "title":"Daily Meeting",
     "group":"Family"
 },
 {
     "id": 4,
     "category": "Meet",
-    "startDate": "20:00",
-    "endDate": "23:00",
-    "title":"Daily Meeting",
-    "group":"Family"
-},
-{
-    "id": 4,
-    "category": "Meet",
-    "startDate": "20:00",
-    "endDate": "23:00",
-    "title":"Daily Meeting",
-    "group":"Family"
-},
-{
-    "id": 4,
-    "category": "Meet",
-    "startDate": "20:00",
-    "endDate": "23:00",
+    "startTIme": "20:00",
+    "endTime": "23:00",
+    "date":"12-10-22",
     "title":"Daily Meeting",
     "group":"Family"
 }
