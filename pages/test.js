@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import BarChart from "../components/BarChart";
 import axios from "axios";
 
-function test(){
+function Test(){
 
   const [testData, setTestData] = useState([]);
 
@@ -54,9 +54,9 @@ return a
     <div style={{width: 400 }}>
     <BarChart chartData={userData}/>
   </div>
-  <div>{}</div>
+  <div>{testData[0].mood}</div>
   </center>
   </div>
 }
 
-export default test;
+export default Test;
