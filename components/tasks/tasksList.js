@@ -11,6 +11,7 @@ export default function TaskList(props) {
       const fetchData = async () => {
         const res = await axios.get("https://firebasestorage.googleapis.com/v0/b/hackathon-d6832.appspot.com/o/tasks.json?alt=media&token=7ce765bd-4df8-4521-bb5b-8c625aff0d21")
         setData(res.data);
+        localStorage.setItem("events", JSON.stringify(res.data));
       };
       useEffect(() => {
         fetchData();
@@ -21,7 +22,7 @@ export default function TaskList(props) {
     return (
         <>
         {props.type == "Day" ? 
-       <Box sx={{display:'flex', flexDirection:'column', justifyContent:'start', mt: 10, alignItems:'center',}}>
+       <Box sx={{display:'flex', flexDirection:'column', justifyContent:'start', mt: 10, alignItems:'center', overflowY:'auto'}}>
        <Typography variant="h1">Your list for today </Typography>
        {data.map(task => {
            return (
@@ -32,7 +33,7 @@ export default function TaskList(props) {
         </Box>  : 
       <Box sx={{display:'flex', flexDirection:'column', justifyContent:'start', mt: 10, alignItems:'center',}}>
       <Typography variant="h1">Your list for week </Typography>
-      {data.map(task => {
+      {data.sort(date).map(task => {
         console.log(task.title)
           return (
             <Grid sx={{width:'80%'}} key={task.id} container spacing={2}>

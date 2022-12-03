@@ -6,6 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Paper } from '@mui/material';
+import moment from 'moment';
 
 export default function eventCard(props) {
 
@@ -32,7 +33,7 @@ export default function eventCard(props) {
     <Paper elevation={14} sx={{my:1, minWidth: 150, maxWidth: 300, maxHeight: '100px' }}  className={`${styles.card} ${getCategory()}`}>
     <CardContent>
     <Typography sx={{ fontSize: 14 }} color="white" >
-        {/* {startDrate ?  startDate : null} - {endDate ? endDate : null} */}
+        {moment(props.data.Date).format('HH:mm')} - {moment(props.data.endDate).format('HH:mm')}
     </Typography>
         <Typography color="white" variant="h6">
             { props.data.title }
