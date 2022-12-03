@@ -8,11 +8,25 @@ import Grid from '@mui/material/Grid';
 
 export default function TaskList(props) {
     
-    
+    let events = [];
+    const axios = require('axios');
+  
+    const getEvents = () => {
+      axios.get("https://firebasestorage.googleapis.com/v0/b/hackathon-d6832.appspot.com/o/tasks.json?alt=media&token=7ce765bd-4df8-4521-bb5b-8c625aff0d21").then(
+        (response) => {
+            events = response.data;
+            console.log(events);
+        }
+      )
+    }
+  
+    useEffect(() => {
+      getEvents();
+    });
+
     const [taskData, setTaskData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
       
-    
     // useEffect(() => {
     //     async function fetchData(){
     //         const response = await fetch('https://ehcyy6pxcj.execute-api.eu-central-1.amazonaws.com/development/users')
@@ -31,7 +45,7 @@ export default function TaskList(props) {
     //   }
       
 
-    const exampleTasks =[
+    let exampleTasks =[
         {
             id:'1',
             date: "22.10.22",
@@ -79,7 +93,7 @@ export default function TaskList(props) {
         {props.type == "Day" ? 
        <Box sx={{display:'flex', flexDirection:'column', justifyContent:'start', mt: 10, alignItems:'center',}}>
        <Typography variant="h1">Your list for today </Typography>
-       {exampleTasks.map(task => {
+       {events.map(task => {
            return (
                <EventCard key={task.id} data={task}/>
                )
@@ -88,7 +102,7 @@ export default function TaskList(props) {
         </Box>  : 
       <Box sx={{display:'flex', flexDirection:'column', justifyContent:'start', mt: 10, alignItems:'center',}}>
       <Typography variant="h1">Your list for week </Typography>
-      {exampleTasks.map(task => {
+      {events.map(task => {
           return (
             <Grid sx={{width:'80%'}} key={task.id} container spacing={2}>
                 <Grid item xs={2}>
