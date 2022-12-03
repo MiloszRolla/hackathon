@@ -1,0 +1,30 @@
+[
+    {
+        "mood": 3,
+        "diary":"Dear diary, today..."
+    },
+    {
+        "mood": 5,
+        "diary":"Dzisiaj mialem ciezki dzien"
+    },
+    {
+        "mood": 1,
+        "diary":"nienawidze mojej pracy"
+    },
+    {
+        "mood": 1,
+        "diary":"Ten Milosz to jest najgorszy"
+    },
+    {
+        "mood": 2,
+        "diary":"Hexagon is bestaagon"
+    },
+    {
+        "mood": 3,
+        "diary":"Web_jak_sklep"
+    },
+    {
+        "mood": 4,
+        "diary":"Duppa"
+    }
+]
