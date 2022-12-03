@@ -1,17 +1,14 @@
 import React from 'react'
 import Box from '@mui/material/Box';
-import { Paper } from '@mui/material';
+import GoogleIcon from '@mui/icons-material/Google';
 import { Button, TextField, Typography } from '@mui/material';
 export default function loginPanel() {
   return (
-    <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',borderRadius:'10% 0px 0px 10%' ,width:'70vw', height:'100vh',}}>
-    <Paper elevation={14} sx={{display:'flex',flexDirection:'column',gap:'20px',justifyContent:'start', paddingTop:'50px', px:"20px",alignItems:'center', borderRadius:'10%' ,width:'50%', background:'#ffffff', height:'50%'}}>
-        <Typography sx={{color:'#000', fontWeight:'400' }} variant="h2" >Login</Typography>
-        <TextField variant='standard' fullWidth label="Login"></TextField>
-        <TextField variant='standard'  fullWidth label="Password"></TextField>
-        <Button sx={{background:'#69b3bf'}} fullWidth variant="contained">Lets go!</Button>
-    </Paper>
+    <Box sx={{display:'flex',justifyContent:'start',flexDirection:'column',alignItems:'center',borderRadius:'10% 0px 0px 10%', px:5 ,width:'30vw', height:'100vh', background:'#94D8E1'}}>
+        <Typography sx={{color:'#fff', fontWeight:'400', textAlign:'center', mt:10 }} variant="h3">Doesnt have an account?</Typography>
+        <Button sx={{background:'#69b3bf', my:5}} fullWidth variant="contained">Sign up!</Button>
+        <Typography sx={{color:'#fff', fontWeight:'400', textAlign:'center'}} variant="h3">Or</Typography>
+        <Button  sx={{background:'#69b3bf',my:5}} fullWidth variant="contained" endIcon={<GoogleIcon/>}>Login with Google</Button>
   </Box>
-
   )
 }
