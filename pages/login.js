@@ -17,8 +17,17 @@ export default function login() {
 
   return (
     <>
-        {/* <Image alt="Background" src="/sc2.svg" layout="fill" objectFit="cover" quality={100} /> */}
-    <Box sx={{display:'flex', justifyContent:'space-between', background:'#FAF3DD', width:'100vw', height:'100vh'}}>
+     <div className="bgWrap">
+          <Image
+          alt="Background"
+          src="/images/bc.svg"
+          layout="fill"
+          objectFit="cover"
+          priority
+          quality={100}
+          />
+          </div>
+          <Box sx={{display:'flex', justifyContent:'space-between', width:'100vw', height:'100vh'}}>
         <Login></Login>
         <RegisterPanel></RegisterPanel>
       </Box>
