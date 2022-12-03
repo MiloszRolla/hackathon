@@ -1,7 +1,12 @@
 import React from 'react'
+import BarSide from '../components/sidebar/barSide'
 
 export default function settings() {
   return (
-    <div>settings</div>
+    <>
+         <BarSide></BarSide>
+    </>
   )
 }
+
+
