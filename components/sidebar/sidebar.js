@@ -26,6 +26,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AddIcon from '@mui/icons-material/Add';
 import Button from '@mui/material/Button';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 const drawerWidth = 240;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -79,6 +80,8 @@ export default function PersistentDrawerLeft() {
   const settings = ['Profile', 'Account', 'Logout'];
   const [viewType, setViewType] = React.useState("Day");
 
+  const router = useRouter();
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -94,6 +97,12 @@ export default function PersistentDrawerLeft() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const handleLogoutMenu = () => {
+    localStorage.clear();
+    router.push('/login');
+    setAnchorElUser(null);
+  }
 
   console.log(viewType)
   return (
@@ -136,7 +145,7 @@ export default function PersistentDrawerLeft() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <MenuItem key={setting} onClick={(setting != 'Logout') ? handleCloseUserMenu : handleLogoutMenu}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
