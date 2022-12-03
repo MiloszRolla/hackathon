@@ -5,6 +5,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { Paper } from '@mui/material';
 
 export default function eventCard(task) {
 
@@ -30,7 +31,7 @@ export default function eventCard(task) {
     }
 
     return (
-    <Card sx={{my:1, minWidth: 275, maxHeight: '100px' }} className={`${styles.card} ${getCategory()}`}>
+    <Paper elevation={14} sx={{my:1, minWidth: 275, maxHeight: '100px' }} className={`${styles.card} ${getCategory()}`}>
     <CardContent>
         <Typography sx={{ fontSize: 19 }} color="white" >
             {startDate ?  startDate : null} - {endDate ? endDate : null}
@@ -39,6 +40,6 @@ export default function eventCard(task) {
             { title }
         </Typography>
     </CardContent>
-    </Card>
+    </Paper>
     )
 }

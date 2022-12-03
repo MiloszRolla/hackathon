@@ -25,6 +25,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AddIcon from '@mui/icons-material/Add';
 import Button from '@mui/material/Button';
+import Link from 'next/link';
 const drawerWidth = 240;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -176,7 +177,9 @@ export default function PersistentDrawerLeft() {
         </List>
         <Divider />
         <List sx={{display:"flex", justifyContent:'center'}}>
-         <Button sx={{width:'80%'}} variant='contained' endIcon={<AddIcon/>}>Add Event</Button>
+          <Link href="/createEvent">
+            <Button sx={{width:'80%'}} variant='contained' endIcon={<AddIcon/>}>Add Event</Button>
+          </Link>
         </List>
       </Drawer>
       <Main
