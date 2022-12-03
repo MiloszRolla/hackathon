@@ -61,7 +61,7 @@ export default function TaskList(props) {
         {props.type == "Day" ? 
        <Box sx={{display:'flex', flexDirection:'column', justifyContent:'start', mt: 10, alignItems:'center',}}>
        <Typography variant="h1">Your list for today </Typography>
-       {events.map(task => {
+       {data.map(task => {
            return (
                <EventCard key={task.id} data={task}/>
                )
