@@ -14,10 +14,12 @@
     "@mui/icons-material": "^5.10.16",
     "@mui/material": "^5.10.16",
     "@next/font": "^13.0.6",
+    "chart.js": "^4.0.1",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.6",
     "next": "^13.0.6",
     "react": "^18.2.0",
+    "react-chartjs-2": "^5.0.1",
     "react-dom": "^18.2.0"
   },
   "browser": {
@@ -25,5 +27,4 @@
     "path": false,
     "os": false
   }
-  
 }
