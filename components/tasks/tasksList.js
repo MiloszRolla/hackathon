@@ -16,7 +16,20 @@ export default function TaskList(props) {
       useEffect(() => {
         fetchData();
       }, []);
-    
+
+
+
+      function compare( a, b ) {
+        if ( a.date < b.date ){
+          return -1;
+        }
+        if ( a.date > b.date ){
+          return 1;
+        }
+        return 0;
+      }
+      data.sort( compare );
+
         console.log(data)
     
     return (
@@ -33,37 +46,36 @@ export default function TaskList(props) {
         </Box>  : 
       <Box sx={{display:'flex', flexDirection:'column', justifyContent:'start', mt: 10, alignItems:'center',}}>
       <Typography variant="h1">Your list for week </Typography>
-      {data.sort(date).map(task => {
-        console.log(task.title)
+      {data.map(task => {
           return (
-            <Grid sx={{width:'80%'}} key={task.id} container spacing={2}>
-                <Grid item xs={2}>
+            <Box sx={{width:'80%', display:'flex', justifyContent:'center'}} key={task.id}>
+                <Box>
                     <EventCard  data={task}/>
-                 </Grid>
+                 </Box>
              
-                 <Grid item xs={2}>
+                 <Box>
                     <EventCard  data={task}/>
-                 </Grid>
+                 </Box>
 
-                 <Grid item xs={2}>
+                 <Box>
                     <EventCard  data={task}/>
-                 </Grid>
+                 </Box>
 
-                 <Grid item xs={2}>
+                 <Box>
                     <EventCard  data={task}/>
-                 </Grid>
+                 </Box>
 
-                 <Grid item xs={2}>
+                 <Box>
                     <EventCard  data={task}/>
-                 </Grid>
+                 </Box>
 
-                 <Grid item xs={1}>
+                 <Box>
                     <EventCard  data={task}/>
-                 </Grid>
-                 <Grid item xs={1}>
+                 </Box>
+                 <Box>
                     <EventCard  data={task}/>
-                 </Grid>
-            </Grid>
+                 </Box>
+            </Box>
               )
           })
           }

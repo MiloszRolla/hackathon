@@ -12,8 +12,12 @@ import MenuItem from '@mui/material/MenuItem';
 import {  useState } from "react";
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-export default function CreateForm() {
- 
+import { useRouter } from 'next/router';
+
+
+export default function CreateForm() { 
+
+  const router = useRouter();
   const [catGroup, setCatGroup] = React.useState('');
   const [category, setCategory] = React.useState('');
   const [title, setTitle] = useState("");
@@ -47,9 +51,9 @@ export default function CreateForm() {
       id: randomID*2,
       date: "22.10.22",
       category: "Task",
-      date:"2022-12-07T13:11:54.000Z",
-      endDate:"2022-12-22T20:14:54.000Z",
-      title:'Default',
+      date:"2022-12-07T11:10:00.000Z",
+      endDate:"2022-12-22T12:10:00.000Z",
+      title:'Meeting with friends',
       group:'Friends',
     },
   ]
@@ -66,6 +70,7 @@ export default function CreateForm() {
     console.log("Pushed table");
     addEvent();
     clearState();
+    router.push('/calendar')
   console.log(array);
 
   }
@@ -123,7 +128,7 @@ export default function CreateForm() {
 
             <FormControl fullWidth>
   <InputLabel 
-   id="demo-simple-select-label">Group</InputLabel>
+   id="demo-simple-select-label">Members</InputLabel>
   <Select
     labelId="demo-simple-select-label"
     id="demo-simple-select"
