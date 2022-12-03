@@ -56,12 +56,17 @@ export default function CreateForm() {
 
   const pushTable = (event) => {
     array.push(event)
+    console.log("Pushed table");
     addEvent();
   }
   const addEvent = () => {
+    let oldArr = localStorage.getItem("events");
+    oldArr = oldArr ? JSON.parse(oldArr) : [];
+    const newArr = [...oldArr, ...array];
+    localStorage.setItem("events", JSON.stringify(newArr));
     axios
       .post("https://firebasestorage.googleapis.com/v0/b/hackathon-d6832.appspot.com/o/tasks.json?alt=media&token=7ce765bd-4df8-4521-bb5b-8c625aff0d21", 
-      array
+      newArr
       )
       .catch((error) => {
         if (error.response) {

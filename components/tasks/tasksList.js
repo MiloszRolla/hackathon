@@ -11,6 +11,7 @@ export default function TaskList(props) {
       const fetchData = async () => {
         const res = await axios.get("https://firebasestorage.googleapis.com/v0/b/hackathon-d6832.appspot.com/o/tasks.json?alt=media&token=7ce765bd-4df8-4521-bb5b-8c625aff0d21")
         setData(res.data);
+        localStorage.setItem("events", JSON.stringify(res.data));
       };
       useEffect(() => {
         fetchData();

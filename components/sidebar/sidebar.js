@@ -99,7 +99,8 @@ export default function PersistentDrawerLeft() {
   };
 
   const handleLogoutMenu = () => {
-    localStorage.clear();
+    localStorage.removeItem("login");
+    localStorage.removeItem("passwd");
     router.push('/login');
     setAnchorElUser(null);
   }
