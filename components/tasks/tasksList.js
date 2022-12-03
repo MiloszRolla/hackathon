@@ -3,22 +3,33 @@ import { Box } from '@mui/system'
 import EventCard from '../eventCard/eventCard'
 import axios from "axios";
 import { Typography } from '@mui/material';
+import Grid from '@mui/material/Grid';
 
 
-export default function TaskList() {
+export default function TaskList(props) {
     
     
-    const [data, setData] = useState([]);
-    // const fetchData = async () => {
-    //     const res = await axios.get(`https://ehcyy6pxcj.execute-api.eu-central-1.amazonaws.com/development/users`);
-    //     console.log(res.data);
-    //   };
+    const [taskData, setTaskData] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+      
+    
+    // useEffect(() => {
+    //     async function fetchData(){
+    //         const response = await fetch('https://ehcyy6pxcj.execute-api.eu-central-1.amazonaws.com/development/users')
+    //         const data = await response.json()
+    //         setTaskData(data)
+    //         setIsLoading(false)
+    //     }
+    //     fetchData();
+    //   }, []);
 
-      useEffect(() => {
-        // fetchData();
-      });
-
-
+    //   if(isLoading) {
+    //     return console.log(isLoading)
+    //   } 
+    //   else {
+    //     console.log(taskData)
+    //   }
+      
 
     const exampleTasks =[
         {
@@ -27,7 +38,7 @@ export default function TaskList() {
             category: "Task",
             startDate: "8:00",
             endDate: "10:00",
-            title:'Zona',
+            title:'Żona',
             group:'Friends',
             visibility:
             'Group: (visible for this.group) or none (visible for me) ',
@@ -62,15 +73,56 @@ export default function TaskList() {
 
 
 
+
     return (
-    <Box sx={{display:'flex', flexDirection:'column', justifyContent:'start', mt: 10, alignItems:'center',}}>
-        <Typography variant="h1">Your list for today </Typography>
-        {exampleTasks.map(task => {
-            return (
-                <EventCard key={task.id} data={task}/>
-                )
-            })
-            }
-    </Box>
+        <>
+        {props.type == "Day" ? 
+       <Box sx={{display:'flex', flexDirection:'column', justifyContent:'start', mt: 10, alignItems:'center',}}>
+       <Typography variant="h1">Your list for today </Typography>
+       {exampleTasks.map(task => {
+           return (
+               <EventCard key={task.id} data={task}/>
+               )
+           })
+           }
+        </Box>  : 
+      <Box sx={{display:'flex', flexDirection:'column', justifyContent:'start', mt: 10, alignItems:'center',}}>
+      <Typography variant="h1">Your list for week </Typography>
+      {exampleTasks.map(task => {
+          return (
+            <Grid sx={{width:'80%'}} key={task.id} container spacing={2}>
+                <Grid item xs={2}>
+                    <EventCard  data={task}/>
+                 </Grid>
+             
+                 <Grid item xs={2}>
+                    <EventCard  data={task}/>
+                 </Grid>
+
+                 <Grid item xs={2}>
+                    <EventCard  data={task}/>
+                 </Grid>
+
+                 <Grid item xs={2}>
+                    <EventCard  data={task}/>
+                 </Grid>
+
+                 <Grid item xs={2}>
+                    <EventCard  data={task}/>
+                 </Grid>
+
+                 <Grid item xs={1}>
+                    <EventCard  data={task}/>
+                 </Grid>
+                 <Grid item xs={1}>
+                    <EventCard  data={task}/>
+                 </Grid>
+            </Grid>
+              )
+          })
+          }
+        </Box>     
+    }
+</>
   )
 }
